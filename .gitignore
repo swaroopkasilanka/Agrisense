@@ -216,3 +216,23 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Virtual Environment
+.venv/
+venv/
+
+# VS Code
+.vscode/
+
+# ML Models
+agrisense-backend/artifacts/model/
+agrisense-backend/Notebooks/artifacts/
+
+# Training Data
+agrisense-backend/Data/crop_weather_soil.csv
+
+agrisense-backend/logs/
+agrisense-backend/Notebooks/catboost_info/
+New Text Document.txt
+
+agrisense-backend/.env

@@ -1,0 +1,106 @@
+mutation CreateDemoData @transaction @auth(level: USER, insecureReason: "This operation is for seeding data and should only be run by authenticated users.") {
+  user_insertMany(data: [
+    {
+      id: "a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      displayName: "Alice Smith",
+      email: "alice@example.com",
+      createdAt: "2023-01-01T10:00:00Z",
+      organization: "AgriSense Corp"
+    },
+    {
+      id: "f1e2d3c4-b5a6-0987-6543-210fedcba987",
+      displayName: "Bob Johnson",
+      email: "bob@example.com",
+      createdAt: "2023-01-02T11:00:00Z",
+      organization: "Green Fields Inc."
+    }
+  ])
+  farm_insertMany(data: [
+    {
+      id: "11223344-5566-7788-9900-aabbccddeeff",
+      name: "Sunny Meadows Farm",
+      location: "Springfield, IL",
+      createdAt: "2023-01-03T12:00:00Z",
+      farmSize: 150.75,
+      userId: "a1b2c3d4-e5f6-7890-1234-567890abcdef"
+    },
+    {
+      id: "22334455-6677-8899-00aa-bbccddeeff11",
+      name: "Rolling Hills Ranch",
+      location: "Pleasantville, CA",
+      createdAt: "2023-01-04T13:00:00Z",
+      farmSize: 300.20,
+      userId: "f1e2d3c4-b5a6-0987-6543-210fedcba987"
+    }
+  ])
+  field_insertMany(data: [
+    {
+      id: "aaaabbbb-cccc-dddd-eeee-ffff11112222",
+      name: "North Field",
+      size: 75.5,
+      createdAt: "2023-01-05T14:00:00Z",
+      farmId: "11223344-5566-7788-9900-aabbccddeeff",
+      soilType: "Loam",
+      notes: "Good drainage"
+    },
+    {
+      id: "bbbbaaaa-dddd-cccc-ffff-eeee33334444",
+      name: "South Field",
+      size: 100.0,
+      createdAt: "2023-01-06T15:00:00Z",
+      farmId: "11223344-5566-7788-9900-aabbccddeeff",
+      soilType: "Clay",
+      notes: "Requires more irrigation"
+    }
+  ])
+  cropType_insertMany(data: [
+    {
+      id: "00000000-0000-0000-0000-000000000001",
+      name: "Wheat",
+      description: "Winter Wheat",
+      optimalGrowingConditions: "Cool temperatures, well-drained soil"
+    },
+    {
+      id: "00000000-0000-0000-0000-000000000002",
+      name: "Corn",
+      description: "Sweet Corn",
+      optimalGrowingConditions: "Warm temperatures, ample sunlight"
+    }
+  ])
+  cropCycle_insertMany(data: [
+    {
+      id: "55556666-7777-8888-9999-000011112222",
+      plantingDate: "2023-03-15",
+      expectedHarvestDate: "2023-08-01",
+      createdAt: "2023-03-15T09:00:00Z",
+      fieldId: "aaaabbbb-cccc-dddd-eeee-ffff11112222",
+      cropTypeId: "00000000-0000-0000-0000-000000000001"
+    },
+    {
+      id: "66665555-8888-7777-0000-111122223333",
+      plantingDate: "2023-04-10",
+      expectedHarvestDate: "2023-09-15",
+      createdAt: "2023-04-10T09:30:00Z",
+      fieldId: "bbbbaaaa-dddd-cccc-ffff-eeee33334444",
+      cropTypeId: "00000000-0000-0000-0000-000000000002"
+    }
+  ])
+  activity_insertMany(data: [
+    {
+      id: "c1c2c3c4-d5d6-e7e8-f9f0-1a2b3c4d5e6f",
+      type: "Planting",
+      date: "2023-03-15",
+      description: "Wheat planting in North Field",
+      cropCycleId: "55556666-7777-8888-9999-000011112222"
+    },
+    {
+      id: "d1d2d3d4-e5e6-f7f8-a9a0-1b2c3d4e5f6a",
+      type: "Fertilizing",
+      date: "2023-05-10",
+      description: "Applied organic fertilizer",
+      amount: 100.0,
+      unit: "kg",
+      cropCycleId: "55556666-7777-8888-9999-000011112222"
+    }
+  ])
+}

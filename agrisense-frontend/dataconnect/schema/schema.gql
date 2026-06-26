@@ -1,0 +1,51 @@
+type User @table {
+  displayName: String!
+  email: String!
+  createdAt: Timestamp!
+  photoUrl: String
+  organization: String
+}
+
+type Farm @table {
+  name: String!
+  location: String! # Assuming location is a string representation of coordinates
+  createdAt: Timestamp!
+  description: String
+  farmSize: Float
+  user: User
+}
+
+type Field @table {
+  name: String!
+  size: Float!
+  createdAt: Timestamp!
+  soilType: String
+  notes: String
+  farm: Farm
+}
+
+type CropType @table {
+  name: String!
+  description: String
+  optimalGrowingConditions: String
+}
+
+type CropCycle @table {
+  plantingDate: Date!
+  expectedHarvestDate: Date!
+  createdAt: Timestamp!
+  actualHarvestDate: Date
+  yieldAmount: Float
+  yieldUnit: String
+  field: Field
+  cropType: CropType
+}
+
+type Activity @table {
+  type: String!
+  date: Date!
+  description: String!
+  amount: Float
+  unit: String
+  cropCycle: CropCycle
+}

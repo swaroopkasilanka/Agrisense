@@ -1,0 +1,19 @@
+TRAIN_DATA_FILE=train_valid.pkl
+TEST_DATA_FILE=test.pkl
+
+MODEL_FILE_NAME=lightgbm_crop_model.pkl
+MLB_FILE_NAME=mlb.pkl
+METADATA_FILE_NAME=metadata.json
+METRICS_FILE_NAME=model_metrics.json
+RAW_DATA_FILE = crop_weather_soil.csv
+SOIL_FILE = india_district_soil_profile.csv
+WEATHER_LOOKUP_FILE = weather_lookup.csv
+
+LOG_FILE_NAME=agrisense.log
+LOG_LEVEL=INFO
+
+RANDOM_STATE=42
+
+MODEL_VERSION=1.0.0
+WEATHER_API_KEY = "WEATHER_API_KEY"
+WEATHER_API_TIMEOUT=30

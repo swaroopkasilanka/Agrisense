@@ -1,0 +1,2 @@
+Model,Micro_F1,Macro_F1,Hamming_Loss,Precision@5,Training_Time_Sec
+Logistic Regression,0.7675,0.5389,0.048,0.6903,23.37

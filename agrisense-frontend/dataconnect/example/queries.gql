@@ -1,0 +1,35 @@
+query ListAllCropTypes @auth(level: PUBLIC, insecureReason: "This operation is safe to expose to the public") {
+  cropTypes {
+    id
+    name
+    description
+  }
+}
+
+query GetMyFarms @auth(level: USER, insecureReason: "This operation is safe to expose to all logged in users.") {
+  farms(where: {userId: {eq_expr: "auth.uid"}}) {
+    id
+    name
+    location
+    farmSize
+  }
+}
+
+mutation CreateActivityForCropCycle($cropCycleId: UUID!, $type: String!, $date: Date!, $description: String!, $amount: Float, $unit: String) @auth(level: USER) {
+  activity_insert(data: {
+    cropCycleId: $cropCycleId,
+    type: $type,
+    date: $date,
+    description: $description,
+    amount: $amount,
+    unit: $unit
+  }) {
+    id
+  }
+}
+
+mutation UpdateFarmLocation($farmId: UUID!, $newLocation: String!) @auth(expr: "exists(farm(id: $farmId, where: {userId: {eq_expr: \"auth.uid\"}}))") {
+  farm_update(key: {id: $farmId}, data: {location: $newLocation}) {
+    id
+  }
+}

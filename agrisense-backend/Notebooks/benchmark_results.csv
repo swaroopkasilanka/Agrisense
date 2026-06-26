@@ -1,0 +1,7 @@
+Model,Micro_F1,Macro_F1,Hamming_Loss,Precision@5,Training_Time_Sec
+LightGBM,0.8581,0.6232,0.0289,0.7288,45.92
+XGBoost,0.84,0.6069,0.0321,0.7267,48.03
+CatBoost,0.8358,0.6059,0.0334,0.7231,196.0
+ExtraTrees,0.8751,0.6402,0.0256,0.7339,2964.19
+RandomForest,0.8687,0.631,0.0265,0.7315,2501.54
+Logistic Regression,0.7675,0.5389,0.048,0.6903,23.37
